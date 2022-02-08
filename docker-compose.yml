@@ -1,0 +1,20 @@
+version: "3"
+services:
+  gatsby:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gero_blog_gatsby
+    container_name: gero_blog_gatsby
+    ports:
+      - "8000:8000"
+    volumes:
+      - gero_blog_node_modules_vol:/app/node_modules
+      - ./gatsby-starter-blog:/app
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+
+volumes:
+  gero_blog_node_modules_vol:
+    external: true
